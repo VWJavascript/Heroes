@@ -1,0 +1,13 @@
+<!-- When there is no hero, the ngIf directive removes the hero detail HTML from the DOM. -->
+<div *ngIf="hero">
+  <h2>{{hero.name}} details!</h2>
+  <div>
+    <label>ID: </label>{{hero.id}}
+  </div>
+  <div>
+    <label>Name: </label>
+    <!-- Two way data binding -->
+    <!-- Data flows in both directions: from the property to the textbox, and from the textbox back to the property -->
+    <input [(ngModel)]="hero.name" placeholder="name" />
+  </div>
+</div>

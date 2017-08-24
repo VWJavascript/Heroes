@@ -1,16 +1,30 @@
-<h1>{{title}}</h1>
-<h2>{{hero.name}} details!</h2>
-
 <!-- One way data binding -->
-<!-- Data flows in one directions: from the property to the div -->
-<div>
-  <label>ID:</label>
-  {{hero.id}}
-</div>
+<!-- Data flows in one directions: from the property to the h1 -->
+<h1>{{title}}</h1>
 
-<!-- Two way data binding -->
-<!-- Data flows in both directions: from the property to the textbox, and from the textbox back to the property -->
-<div>
-  <label>Nome: </label>
-  <input [(ngModel)]="hero.name" placeholder="name">
-</div>
+<!-- List of heroes -->
+<ul class="heroes">
+  <!-- * indicates that the li element and its children constitute a master template -->
+  <!-- [class.selected] apply selected style class in css to li element when the user click on the hero name (hero === selectedHero) -->
+  <!-- (click) Click event binding to the li element -->
+  <!-- The onSelect(hero) expression calls AppComponent method, onSelect(), passing the template input variable hero, as an argument. -->
+  <li
+    *ngFor="let hero of heroes"
+    [class.selected]="hero === selectedHero"
+    (click)="onSelect(hero)">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
+
+<!--
+  This component will tell the child HeroDetailComponent which hero to display by binding its selectedHero
+  to the hero property of the HeroDetailComponent.
+-->
+<!--
+  Putting square brackets around the hero property, to the left of the equal sign (=), makes it the
+  target of a property binding expression.
+-->
+<!--
+  You must declare a target binding property to be an input property
+-->
+<hero-detail [hero]="selectedHero"></hero-detail>
