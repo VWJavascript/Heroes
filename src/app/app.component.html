@@ -2,24 +2,12 @@
 <!-- Os dados fluem em uma única direção: da propriedade title para a tag h1 -->
 <h1>{{title}}</h1>
 
-<!-- Lista de herois -->
-<ul class="heroes">
-  <!-- * indica que o elemento li e seus filhos constituem o template master -->
-  <!-- [class.selected] aplica o estilo css "selected" para o elemento li quando o usuario clicar no nome do heroi (hero == selectedHero) -->
-  <!-- (click) Evento de clique anexado no elemento li -->
-  <!-- A função onSelect(hero) chama o método onSelect() do AppComponent, passando a variável hero como argumento -->
-  <li
-    *ngFor="let hero of heroes"
-    [class.selected]="hero === selectedHero"
-    (click)="onSelect(hero)">
-    <span class="badge">{{hero.id}}</span> {{hero.name}}
-  </li>
-</ul>
+<!-- A diretiva RouterLink é vinculada a uma string que informa o roteador para navegar quando o usuário clica no link -->
+<nav>
+  <a routerLink="/dashboard">Dashboard</a>
+  <a routerLink="/heroes">Heroes</a>
+</nav>
 
-<!--
-  O AppComponent vai dizer ao seu filho HeroDetailComponent qual o heroi deve ser mostrado através da variável selectedHero
-  que será armazenado na variável hero do componente HeroDetailComponent
-  Colocar [] entre a propriedade hero, faz com que o essa propriedade receba o valor após o sinal de igual (=).
-  Você deve declara a variável hero no HeroDetailComponent como um input property para que seja possivel essa comunicação entre componentes
--->
-<hero-detail [hero]="selectedHero"></hero-detail>
+<!-- Diz ao roteador onde exibir o componente -->
+<!-- O roteador exibe cada componente imediatamente abaixo do <router-outlet> à medida que os usuários navegam pelo aplicativo -->
+<router-outlet></router-outlet>
