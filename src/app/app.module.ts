@@ -1,22 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-// Module to import NgModel to get two way data buind in forms
+// Modulo para importa o NgModel que é usado no two way data buind nos formularios
 import { FormsModule }   from '@angular/forms';
 
-// A component must be declared in a module before other components can reference it.
+// Um componente deve ser declarado no modulo antes de outros componente o utilizarem.
 import { AppComponent } from './app.component';
 import { HeroDetailComponent } from './hero-detail.component';
 
 @NgModule({
 
-  // Used to import modules
+  // AppComponent utiliza/importa esses modulos (BrowserModule e FormsModule)
+  // logo todos os componentes dentro desses modulos podem ser utilizados no AppComponent
   imports: [
     BrowserModule,
     FormsModule
   ],
 
-  // Every component must be declared in one, and only one, NgModule.
-  // Declarations array contains a list of application components, pipes, and directives that belong to the module.
+  // Todos os componentes devem ser declarados em um, e somente um modulo (NgModule)
+  // O array declarations contem uma lista de componentes, pipes e diretivas que pertencem a esse modulo.
+  // Quando um modulo qualquer importa esse modulo, ele pode utilizar desses componentes, diretivas e pipes
   declarations: [
     AppComponent,
     HeroDetailComponent

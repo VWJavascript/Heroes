@@ -1,13 +1,13 @@
 <!-- One way data binding -->
-<!-- Data flows in one directions: from the property to the h1 -->
+<!-- Os dados fluem em uma única direção: da propriedade title para a tag h1 -->
 <h1>{{title}}</h1>
 
-<!-- List of heroes -->
+<!-- Lista de herois -->
 <ul class="heroes">
-  <!-- * indicates that the li element and its children constitute a master template -->
-  <!-- [class.selected] apply selected style class in css to li element when the user click on the hero name (hero === selectedHero) -->
-  <!-- (click) Click event binding to the li element -->
-  <!-- The onSelect(hero) expression calls AppComponent method, onSelect(), passing the template input variable hero, as an argument. -->
+  <!-- * indica que o elemento li e seus filhos constituem o template master -->
+  <!-- [class.selected] aplica o estilo css "selected" para o elemento li quando o usuario clicar no nome do heroi (hero == selectedHero) -->
+  <!-- (click) Evento de clique anexado no elemento li -->
+  <!-- A função onSelect(hero) chama o método onSelect() do AppComponent, passando a variável hero como argumento -->
   <li
     *ngFor="let hero of heroes"
     [class.selected]="hero === selectedHero"
@@ -17,14 +17,9 @@
 </ul>
 
 <!--
-  This component will tell the child HeroDetailComponent which hero to display by binding its selectedHero
-  to the hero property of the HeroDetailComponent.
--->
-<!--
-  Putting square brackets around the hero property, to the left of the equal sign (=), makes it the
-  target of a property binding expression.
--->
-<!--
-  You must declare a target binding property to be an input property
+  O AppComponent vai dizer ao seu filho HeroDetailComponent qual o heroi deve ser mostrado através da variável selectedHero
+  que será armazenado na variável hero do componente HeroDetailComponent
+  Colocar [] entre a propriedade hero, faz com que o essa propriedade receba o valor após o sinal de igual (=).
+  Você deve declara a variável hero no HeroDetailComponent como um input property para que seja possivel essa comunicação entre componentes
 -->
 <hero-detail [hero]="selectedHero"></hero-detail>
