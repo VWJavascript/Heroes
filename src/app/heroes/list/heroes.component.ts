@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Hero } from './hero'
-import { HeroService } from './hero.service';
+import { Hero } from '../hero'
+import { HeroService } from '../hero.service';
 
 // É a diretiva que define um componente
 @Component({
