@@ -1,0 +1,19 @@
+<div id="search-component">
+  <h4>Hero Search</h4>
+  <!--
+    A medida que o usuário digita no campo de pesquisa o keyup event chama o método search
+    passando o seu value armazenado na variável searchBox
+  -->
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  <div>
+    <!--
+      Como o array de heroes é um Observable precisamos passar o pipe async para que funcione
+      O pipe async se inscreve no observable e produz a matriz de herois para o ngFor
+    -->
+    <div
+      *ngFor="let hero of heroes | async"
+      (click)="goToDetail(hero)" class="search-result" >
+      {{hero.name}}
+    </div>
+  </div>
+</div>

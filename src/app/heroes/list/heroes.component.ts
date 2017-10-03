@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Hero } from '../hero'
+import { Hero } from '../hero.model'
 import { HeroService } from '../hero.service';
 
 // É a diretiva que define um componente
@@ -34,9 +34,11 @@ export class HeroesComponent implements OnInit {
   // ela for disponibilizada
   // Arrow functions: (parametro1, parametro2, ...) => {codigo}
   getHeroes(): void {
-    this.heroService.getHeroes().then(
-      heroes => {this.heroes = heroes}
-    );
+    this.heroService
+      .getHeroes()
+      .then(heroes => {
+        this.heroes = heroes
+      });
   }
 
   // Angular oferece interfaces para explorar momentos críticos no ciclo de
@@ -56,6 +58,34 @@ export class HeroesComponent implements OnInit {
   // Vai para a rota de detalhes
   goToDetail(): void {
     this.router.navigate(['/detail', this.selectedHero.id]);
+  }
+
+  // Adicionar um novo heroi
+  add(name: string): void {
+    //  pega o nome passado por parâmetro e retira seus espaço em branco se tiver
+    name = name.trim();
+    if (!name) {return;}
+    // Quando a entrada não é vazia ele é delegado a função create do service
+    // e esse insere o novo heroi no array do servidor.
+    this.heroService
+      .create(name)
+      .then(hero => {
+        this.heroes.push(hero);
+        this.selectedHero = null;
+      });
+  }
+
+  delete(hero: Hero): void {
+    this.heroService
+      .delete(hero.id)
+      .then(() => {
+        this.heroes = this.heroes.filter(hero_from_array => {
+          return hero_from_array !== hero
+        });
+        if (this.selectedHero === hero) {
+          this.selectedHero = null;
+        }
+      });
   }
 }
 

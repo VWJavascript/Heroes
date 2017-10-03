@@ -10,6 +10,8 @@
     <!-- Dados fluem em ambas as direções: da propriedade para o textbox e do textbox de volta para a propriedade, usado em formularios -->
     <input [(ngModel)]="hero.name" placeholder="name" />
   </div>
+  <!-- (click) é um evento de click do botão que irá ativar a função save() ao clicar nesse botão -->
+  <button (click)="save()">Save</button>
   <!-- (click) é um evento de click do botão que irá ativar a função goBack() ao clicar nesse botão -->
   <button (click)="goBack()">Back</button>
 </div>
