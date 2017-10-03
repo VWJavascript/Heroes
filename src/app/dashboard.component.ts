@@ -4,7 +4,8 @@ import { HeroService } from './hero.service';
 
 @Component({
   selector: 'dashboard',
-  templateUrl: './dashboard.component.html'
+  templateUrl: 'dashboard.component.html',
+  styleUrls: ['dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
   // Cria um atributo heroes do tipo Hero[] que será inicializada como uma lista vazia []

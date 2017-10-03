@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Hero } from './hero'
 import { HeroService } from './hero.service';
 
@@ -9,9 +10,9 @@ import { HeroService } from './hero.service';
   // Template html que terá o componente
   // Você pode ter um template nesse arquivo através da
   // variavel template: `<p>...</p>`
-  templateUrl: './heroes.component.html',
+  templateUrl: 'heroes.component.html',
   // CSS do componente
-  styleUrls: ['./heroes.component.css'],
+  styleUrls: ['heroes.component.css'],
 })
 export class HeroesComponent implements OnInit {
   // Atributo selectedHero do tipo Hero que pode ser usado no template
@@ -23,7 +24,10 @@ export class HeroesComponent implements OnInit {
   // um heroService do tipo HeroService
   // Agora angular sabe como fornecer uma instância de HeroService
   // quando for criado um AppComponent.
-  constructor(private heroService: HeroService) { }
+  constructor(
+    private router: Router,
+    private heroService: HeroService
+  ) { }
 
   // Pega os herois definidos em heroService como uma promise
   // através do then podemos pegar os dados da promise assim que
@@ -47,6 +51,11 @@ export class HeroesComponent implements OnInit {
   // pelo usuário com um click
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
+  }
+
+  // Vai para a rota de detalhes
+  goToDetail(): void {
+    this.router.navigate(['/detail', this.selectedHero.id]);
   }
 }
 

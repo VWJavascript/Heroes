@@ -17,5 +17,16 @@
   que será armazenado na variável hero do componente HeroDetailComponent
   Colocar [] entre a propriedade hero, faz com que o essa propriedade receba o valor após o sinal de igual (=).
   Você deve declara a variável hero no HeroDetailComponent como um input property para que seja possivel essa comunicação entre componentes
+  <hero-detail [hero]="selectedHero"></hero-detail>
 -->
-<hero-detail [hero]="selectedHero"></hero-detail>
+
+<div *ngIf="selectedHero">
+  <h2>
+    <!--
+      O nome do heroi é exibido em letra maiuscula devido ao pipe uppercase
+      Os pipes são uma boa maneira de formatar strings, montantes em moeda, datas e outros dados de exibição.
+    -->
+    {{selectedHero.name | uppercase}} is my Hero.
+  </h2>
+  <button (click)="goToDetail()">View Details</button>
+</div>

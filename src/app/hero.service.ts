@@ -16,6 +16,20 @@ export class HeroService {
     return Promise.resolve(HEROES);
   }
 
+  // Pega todos os herois através do getHeroes e procurar por um hero especifico através do ID passado
+  getHero(id: number): Promise<Hero> {
+    return this.getHeroes().then(heroes => {
+        let hero = heroes.find(hero => {
+          if(hero.id === id) {
+            return true
+          }
+          return false
+        })
+        return hero;
+      }
+    );
+  }
+
   // Vamos simular um servidor com 2 segundos de atraso (conexão ruim)
   // Como o getHeroes ele retorna uma promise, porém essa promise demora
   // 2 segundos para retornar os dados

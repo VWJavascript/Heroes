@@ -3,9 +3,13 @@
 <h1>{{title}}</h1>
 
 <!-- A diretiva RouterLink é vinculada a uma string que informa o roteador para navegar quando o usuário clica no link -->
+<!--
+  O angular fornece uma diretiva routerLinkActive que você pode usar para adicionar uma classe ao elemento de navegação HTML
+  cuja a rota corresponde à rota ativa.
+-->
 <nav>
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/heroes">Heroes</a>
+  <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+  <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
 </nav>
 
 <!-- Diz ao roteador onde exibir o componente -->
